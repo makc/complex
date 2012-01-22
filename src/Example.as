@@ -144,8 +144,9 @@ package {
 			// unrelated quick tests
 			trace (Complex.C (Math.E).ln ().save (), "= 1");
 			trace (Complex.C (0, 2).ipow (2).save (), "= -4");
-			trace (Complex.C (1).add (Complex.C (1e-4)).pow (Complex.C (1e4)).log (Complex.C (Math.E)).save (), "~ 1");
-			
+			trace (Complex.C (1).add (Complex.C (1e-4)).pow (Complex.C (1e4)).log (Complex.C (Math.E)).save (), "= 1");
+			trace (Complex.C (0, 2).ipow ( -2).save (), "= -.25");
+			trace (Complex.C (0, 2 * Math.PI).exp ().save (), "= 1");
 		}
 
 		private function showResults (N:int):void {
