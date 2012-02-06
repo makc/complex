@@ -28,6 +28,11 @@ package com.ideaskill.math {
 			var scale:Number = length / r; x *= scale; y *= scale;
 		}
 
+		/** Returns the conjugate. */
+		public function conj ():Complex {
+			return C (x, -y);
+		}
+
 		/** Returns the sum of this number and the argument. */
 		public function add (b:Complex):Complex {
 			return C (x + b.x, y + b.y);
