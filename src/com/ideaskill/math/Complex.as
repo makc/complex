@@ -90,7 +90,7 @@ package com.ideaskill.math {
 
 		/**
 		 * Creates permanent instance.
-		 * @param	x Real par.
+		 * @param	x Real part.
 		 * @param	y Imaginary part.
 		 */
 		public function Complex (x:Number = 0, y:Number = 0) {
@@ -104,7 +104,7 @@ package com.ideaskill.math {
 		/**
 		 * Returns temporary instance.
 		 * You could use it for a constant in one calculation.
-		 * @param	x Real par.
+		 * @param	x Real part.
 		 * @param	y Imaginary part.
 		 */
 		public static function C (x:Number = 0, y:Number = 0):Complex {
