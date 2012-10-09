@@ -103,7 +103,7 @@ package com.ideaskill.math {
 
 		/**
 		 * Returns temporary instance.
-		 * You could use it for a constant until ReleaseTemporaries is cold.
+		 * You could use it for a constant until ReleaseTemporaries is called.
 		 * @param	x Real part.
 		 * @param	y Imaginary part.
 		 */
