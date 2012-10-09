@@ -47,15 +47,12 @@ package {
 			D.x = parseFloat (inpD.text);
 
 			// an example of using temporary instance without memory
-			// allocation (unless the pool is still empty); normally
-			// you would just declare this as private const, however
+			// allocation (unless the pool is still empty)
 			var seed:Complex = Complex.C (0.4, 0.9);
 
-			// since seed is temporary instance, we should be careful and not
-			// release temporary instances until we no longer need seed value
-			seed.ipow (0).save (p, false);
-			seed.ipow (1).save (q, false);
-			seed.ipow (2).save (r, false);
+			seed.ipow (0).save (p);
+			seed.ipow (1).save (q);
+			seed.ipow (2).save (r);
 			seed.ipow (3).save (s);
 
 			var N:int = 0;
@@ -98,6 +95,9 @@ package {
 					P.save (p); Q.save (q); R.save (r); S.save (s); N++;
 				}
 			}
+
+			// now when we no longer need temporary variables - return them all to the pool
+			Complex.ReleaseTemporaries ();
 
 			showResults (N);
 		}
@@ -142,11 +142,11 @@ package {
 			solve (null);
 
 			// unrelated quick tests
-			trace (Complex.C (Math.E).ln ().save (), "= 1");
-			trace (Complex.C (0, 2).ipow (2).save (), "= -4");
-			trace (Complex.C (1).add (Complex.C (1e-4)).pow (Complex.C (1e4)).log (Complex.C (Math.E)).save (), "= 1");
-			trace (Complex.C (0, 2).ipow ( -2).save (), "= -.25");
-			trace (Complex.C (0, 2 * Math.PI).exp ().save (), "= 1");
+			trace (Complex.C (Math.E).ln ().save (null, true), "= 1");
+			trace (Complex.C (0, 2).ipow (2).save (null, true), "= -4");
+			trace (Complex.C (1).add (Complex.C (1e-4)).pow (Complex.C (1e4)).log (Complex.C (Math.E)).save (null, true), "~ 1");
+			trace (Complex.C (0, 2).ipow ( -2).save (null, true), "= -.25");
+			trace (Complex.C (0, 2 * Math.PI).exp ().save (null, true), "= 1");
 		}
 
 		private function showResults (N:int):void {

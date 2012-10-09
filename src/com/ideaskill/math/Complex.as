@@ -103,7 +103,7 @@ package com.ideaskill.math {
 
 		/**
 		 * Returns temporary instance.
-		 * You could use it for a constant in one calculation.
+		 * You could use it for a constant until ReleaseTemporaries is cold.
 		 * @param	x Real part.
 		 * @param	y Imaginary part.
 		 */
@@ -113,14 +113,32 @@ package com.ideaskill.math {
 		}
 
 		/**
+		 * Returns all temporary instances back to the pool.
+		 */
+		public static function ReleaseTemporaries ():void {
+			index = 0;
+		}
+
+		/**
+		 * Makes this instsance a copy of given number.
+		 * @param	from Input instance to copy.
+		 * @return This instance, modified.
+		 */
+		public function copy (from:Complex):Complex {
+			x = from.x; y = from.y; return this;
+		}
+
+		/**
 		 * Saves calculation result (or makes a copy of this number).
 		 * @param	result Output instance; will be created if not provided.
 		 * @param	releaseTemporaries Returns all temporary instances back to the pool.
 		 * @return Output instance.
 		 */
-		public function save (result:Complex = null, releaseTemporaries:Boolean = true):Complex {
+		public function save (result:Complex = null, releaseTemporaries:Boolean = false):Complex {
 			if (result == null) result = new Complex;
-			result.x = x; result.y = y; if (releaseTemporaries) index = 0; return result;
+			result.copy (this);
+			if (releaseTemporaries) ReleaseTemporaries ();
+			return result;
 		}
 
 		/**
