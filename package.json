@@ -1,6 +1,6 @@
 {
   "name": "cdk4",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Solves 4th power complex polynomials using Durand-Kerner method.",
   "type": "module",
   "module": "./build/index.js",

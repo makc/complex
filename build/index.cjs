@@ -176,11 +176,12 @@ function f ( z ) {
 }
 
 function safeDiv ( a, b ) {
-    if( b.r < 1e-6 ) {
-        b.x = 1e-6 * ( Math.random () < 0.5 ? -1 : 1 );
-        b.y = 1e-6 * ( Math.random () - Math.random () );
+    const c = a.div ( b );
+    if( isNaN (c.x) ) {
+        c.x = Math.random () - Math.random ();
+        c.y = Math.random () - Math.random ();
     }
-    return a.div ( b );
+    return c;
 }
 
 /**
