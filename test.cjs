@@ -2,11 +2,13 @@ const { Complex, solve4 } = require('./build/index.cjs'), C = Complex.C;
 
 // just test some basic shit and log it for now
 
-console.log (C (Math.E).ln ().save (null, true), "= 1");
-console.log (C (0, 2).ipow (2).save (null, true), "= -4");
-console.log (C (1).add (C (1e-4)).pow (C (1e4)).log (C (Math.E)).save (null, true), "~ 1");
-console.log (C (0, 2).ipow ( -2).save (null, true), "= -.25");
-console.log (C (0, 2 * Math.PI).exp ().save (null, true), "= 1");
+const result = new Complex ();
+
+console.log (C (Math.E).ln ().save (result, true), "= 1");
+console.log (C (0, 2).ipow (2).save (result, true), "= -4");
+console.log (C (1).add (C (1e-4)).pow (C (1e4)).log (C (Math.E)).save (result, true), "~ 1");
+console.log (C (0, 2).ipow ( -2).save (result, true), "= -.25");
+console.log (C (0, 2 * Math.PI).exp ().save (result, true), "= 1");
 
 console.log (new Complex (-1).arg, "~ \u03c0");
 console.log (new Complex (-1, 1).r - Math.SQRT2, "= 0");

@@ -73,7 +73,7 @@ export function solve4 (a, b, c, d) {
             break;
         } else {
             // on to next iteration
-            P.save (p); Q.save (q); R.save (r); S.save (s);
+            P.save (p); Q.save (q); R.save (r); S.save (s, true);
         }
     }
 
