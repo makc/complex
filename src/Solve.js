@@ -34,9 +34,9 @@ function safeDiv ( a, b ) {
 
 /**
  * Solves 4th power polynomials using Durand-Kerner method.
- * @see http://en.wikipedia.org/wiki/Durand-Kerner_method#Explanation
+ * @see https://en.wikipedia.org/wiki/Durand-Kerner_method#Explanation
  */
-export function solve4 (a, b, c, d) {
+export function solve4 (a, b, c, d, releaseTemporaries = true) {
     // accept duck-typed arguments
     A.copy (a); B.copy (b); C.copy (c); D.copy (d);
 
@@ -81,12 +81,14 @@ export function solve4 (a, b, c, d) {
             break;
         } else {
             // on to next iteration
-            P.save (p); Q.save (q); R.save (r); S.save (s, true);
+            P.save (p); Q.save (q); R.save (r); S.save (s, releaseTemporaries);
         }
     }
 
-    // we no longer need temporary variables - return them all to the pool
-    Complex.ReleaseTemporaries ();
+    if (releaseTemporaries) {
+        // we no longer need temporary variables - return them all to the pool
+        Complex.ReleaseTemporaries ();
+    }
 
     return [P, Q, R, S];
 }
