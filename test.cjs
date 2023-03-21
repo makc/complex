@@ -31,3 +31,22 @@ console.log(
             d.x.toPrecision (4) + " = 0"
         )
     );
+
+// collision found in https://makc.github.io/wonderfl/#e9umY
+
+a.x = 0.21334181974695104;
+b.x = 0.9185696207011521;
+c.x = 0.971476866769487;
+d.x = 0.03437845939820224;
+
+solve4( a, b, c, d );
+
+console.log(
+    "\nformer collision:\n\n " + roots[0] + ",\n " + roots[1] + ",\n " + roots[2] + ",\n " + roots[3] +
+	"\n\nhttps://www.wolframalpha.com/input/?i=" + encodeURIComponent ("z^4 + " +
+            a.x.toPrecision (4) + " z^3 + " +
+            b.x.toPrecision (4) + " z^2 + " +
+            c.x.toPrecision (4) + " z + " +
+            d.x.toPrecision (4) + " = 0"
+        )
+    );

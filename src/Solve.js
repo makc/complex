@@ -24,6 +24,14 @@ function f ( z ) {
       .add ( D );
 }
 
+function safeDiv ( a, b ) {
+    if( b.r < 1e-6 ) {
+        b.x = 1e-6 * ( Math.random () < 0.5 ? -1 : 1 );
+        b.y = 1e-6 * ( Math.random () - Math.random () );
+    }
+    return a.div ( b );
+}
+
 /**
  * Solves 4th power polynomials using Durand-Kerner method.
  * @see http://en.wikipedia.org/wiki/Durand-Kerner_method#Explanation
@@ -42,28 +50,28 @@ export function solve4 (a, b, c, d) {
     while (true) {
         // P = p-f(p)/((p-q)(p-r)(p-s))
         p.sub (
-            f (p).div (
+            safeDiv (f (p),
                 ( p.sub (q) ).mul( p.sub (r) ).mul( p.sub (s) )
             )
         ).save (P);
 
         // Q = q-f(q)/((q-p)(q-r)(q-s))
         q.sub (
-            f (q).div (
+            safeDiv (f (q),
                 ( q.sub (p) ).mul( q.sub (r) ).mul( q.sub (s) )
             )
         ).save (Q);
 
         // R = r-f(r)/((r-p)(r-q)(r-s))
         r.sub (
-            f (r).div (
+            safeDiv (f (r),
                 ( r.sub (p) ).mul( r.sub (q) ).mul( r.sub (s) )
             )
         ).save (R);
 
         // S = s-f(s)/((s-p)(s-q)(s-r))
         s.sub (
-            f (s).div (
+            safeDiv (f (s),
                 ( s.sub (p) ).mul( s.sub (q) ).mul( s.sub (r) )
             )
         ).save (S);
