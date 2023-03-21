@@ -1,0 +1,43 @@
+{
+  "name": "cdk4",
+  "version": "0.1.0",
+  "description": "Solves 4th power complex polynomials using Durand-Kerner method.",
+  "type": "module",
+  "module": "./build/index.js",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.cjs"
+    }
+  },
+  "scripts": {
+    "test": "node ./test.cjs",
+    "build": "rollup src/Solve.js --file build/index.js --format esm",
+    "build-node":  "rollup src/Solve.js --file build/index.cjs --format cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makc/complex.git"
+  },
+  "files": [
+    "build",
+    "src",
+    "package.json",
+    "README.md",
+    "test.cjs"
+  ],
+  "keywords": [
+    "complex",
+    "durand-kerner",
+    "solver"
+  ],
+  "author": "makc",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/makc/complex/issues"
+  },
+  "homepage": "https://github.com/makc/complex#readme",
+  "devDependencies": {
+    "rollup": "^3.20.0"
+  }
+}
