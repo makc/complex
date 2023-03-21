@@ -50,3 +50,16 @@ console.log(
             d.x.toPrecision (4) + " = 0"
         )
     );
+
+// zero roots
+
+a.x = 0;
+b.x = 0;
+c.x = 0;
+d.x = 0;
+
+solve4( a, b, c, d );
+
+console.log(
+    "\nzero roots:\n\n " + roots[0] + ",\n " + roots[1] + ",\n " + roots[2] + ",\n " + roots[3]
+);
